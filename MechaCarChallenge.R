@@ -45,6 +45,41 @@ lot_summary <- susp_coil  %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mea
 
 
 
+#box plot: PSI Whole lot
+plt1 <- ggplot(susp_coil,aes(y=PSI)) #import dataset into ggplot2
+plt1 + geom_boxplot() #add boxplot
+
+#box plot: PSI each indicdiual Lot
+plt2 <- ggplot(susp_coil,aes(x=Manufacturing_Lot,y=PSI)) #import dataset into ggplot2
+plt2 + geom_boxplot()
+
+
+
+# DELIVERABLE 3: T-Tests on Suspension Coils
+
+?t.test()
+# 1 Using the t.test() function to determine if the PSI across all manufacturing lots 
+# is statistically different from the population mean of 1,500 pounds per square inch.
+t.test(x=susp_coil$PSI, mu=1500)
+
+# 2 Write 3 more RScripts using the t.test() function and its subset() argument to 
+# determine if the PSI for each manufacturing lot is statistically different from
+# the populaiton mean of 1,500 pounds per square inch (PSI).
+# Create and t. test lot1 cars subset
+pop1 <- subset(susp_coil, Manufacturing_Lot=='Lot1')
+t.test(x=pop1$PSI, mu=1500)
+
+# Create and t. test lot2 cars subset
+pop2 <- subset(susp_coil, Manufacturing_Lot=='Lot2') 
+t.test(x=pop2$PSI, mu=1500)
+
+# Create and t. test lot3 cars subset
+pop3 <- subset(susp_coil, Manufacturing_Lot=='Lot3') 
+t.test(x=pop3$PSI, mu=1500) 
+
+
+
+
 
 
 
